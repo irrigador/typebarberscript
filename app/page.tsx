@@ -8,9 +8,6 @@ import { SearchIcon } from "lucide-react";
 import Image from "next/image";
 import { quickSearchOptions } from "./_constants/search";
 import BookingItem from "@/components/ui/booking-item";
-
-
-
  
 const Home  = async () => {
 

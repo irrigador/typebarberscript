@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
+import ServiceItem from "@/components/ui/service-item";
 import { db } from "@/lib/prisma";
-import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarsIcon } from "lucide-react";
+import { ChevronLeftIcon, MapPinIcon, MenuIcon, SmartphoneIcon, StarsIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,13 +13,14 @@ interface BarbershopPageProps {
 
 const BarbershopPage = async ({params}: BarbershopPageProps) => {
 
-
     const barbershop = await db.barbershop.findUnique({
         where: {
             id: params.id
-        }
-    })
-    return <div>
+        },
+        include: {
+            services:true
+        }})
+    return ( <div>
         <div className="relative w-full h-[250px]">
             <Image src={barbershop?.imageUrl} fill className="object-cover" alt={barbershop.name}/>
         
@@ -50,7 +52,28 @@ const BarbershopPage = async ({params}: BarbershopPageProps) => {
                 <h2 className="font-bold uppercase text-gray-400 text-xs">Sobre Nós</h2>
                 <p className="text-sm text-justify">{barbershop?.description}</p>
         </div>
+        <div className="p-5 space-y-3 border-b border-solid p-5">
+        <h2 className="font-bold uppercase text-gray-400 text-xs mb-3">Serviços</h2>
+        <div className="space-y-4">
+            {barbershop.services.map ((service) => (
+            <ServiceItem key={service.id} service={service}/>
+        ))}
+        </div>
     </div>
+    
+    
+    <div className="p-5">
+        {barbershop.phones.map((phone) => (
+            <div className="flex justify-between" key={phone}>
+                <div className="flex items-center">
+                    <SmartphoneIcon />
+                    <p className="text-sm">{phone}</p>
+                </div> 
+            </div>
+        ))}
+    </div>
+    </div>
+)
 }
 
 export default BarbershopPage;
