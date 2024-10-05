@@ -106,6 +106,9 @@ async function seedDatabase() {
           name,
           address,
           imageUrl: imageUrl,
+          phones: ["(11) 99999-9999", "(11) 99999-9999"],
+          description: 
+          "Texto lorem ipsum Texto lorem ipsum Texto lorem ipsum Texto lorem ipsum",
         },
       });
 
@@ -135,4 +138,4 @@ async function seedDatabase() {
   }
 }
 
-seedDatabase();x
+seedDatabase(); 

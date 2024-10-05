@@ -1,6 +1,5 @@
 import BarbershopItem from "@/components/ui/barbershop-items";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/ui/header";
 import { Input } from "@/components/ui/input";
 import { db } from "@/lib/prisma";
@@ -65,15 +64,7 @@ const Home  = async () => {
       </div>
 
       </div>
-      <footer>
-      <Card>
-        <CardContent className="px-5 py-6">
-      <p className="text-sm text-gray-400">
-      2024 Copyright 
-      </p>
-        </CardContent>
-      </Card>
-      </footer>
+      
           </div>
       
       }

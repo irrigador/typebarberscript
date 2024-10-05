@@ -2,6 +2,9 @@ import { MenuIcon } from "lucide-react";
 import { Button } from "./button";
 import { Card, CardContent } from "./card";
 import Image from "next/image";
+import { Sheet, SheetTrigger } from "./sheet";
+
+import SidebarSheet from "./sidebar-sheet";
 
 
 const Header = () => {
@@ -10,9 +13,14 @@ const Header = () => {
             <CardContent className=" p-5 flex flex-row items-center justify-between">
                 <Image alt="Logo" src="/logo.png" height={18} width={120}/>
 
-                <Button size="icon" variant="outline">
+                <Sheet>
+                    <SheetTrigger asChild>
+                    <Button size="icon" variant="outline">
                     <MenuIcon />
-                </Button>
+                    </Button>
+                    </SheetTrigger>
+                   <SidebarSheet />
+                </Sheet>
             </CardContent>
         </Card>
     );
